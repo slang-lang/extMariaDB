@@ -42,7 +42,7 @@ namespace MariaDB {
 
 
 Extension::Extension()
-: AExtension( "MariaDB", "0.4.2" )
+: AExtension( "MariaDB", "0.5.0" )
 {
 	mMariaDBConnections[0] = mysql_init( nullptr );
 
@@ -53,7 +53,7 @@ Extension::Extension()
 	mName = "MariaDB (using libMariaDB " + std::string( version ) + ")";
 }
 
-void Extension::initialize( Slang::IScope* /*scope*/ )
+void Extension::initialize( Slang::Extensions::ExtensionNamespace* /*scope*/ )
 {
 	// nothing to do here
 }
@@ -68,7 +68,6 @@ void Extension::provideMethods( Slang::Extensions::ExtensionMethods& methods )
 	methods.push_back( new MariaDB::MysqlErrno() );
 	methods.push_back( new MariaDB::MysqlError() );
 	methods.push_back( new MariaDB::MysqlFetchRow() );
-	methods.push_back( new MariaDB::MysqlFetchRow( "mysql_next_row", Slang::LanguageFeatureState::Deprecated ) );	// this is kept to be backwards compatible to old implementations that used 'mysql_next_row' instead of 'mysql_fetch_row'
 	methods.push_back( new MariaDB::MysqlFieldCount() );
 	methods.push_back( new MariaDB::MysqlFieldSeek() );
 	methods.push_back( new MariaDB::MysqlFieldTell() );
