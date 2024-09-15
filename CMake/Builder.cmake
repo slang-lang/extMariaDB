@@ -237,12 +237,12 @@ endfunction()
 function(_mariadb_check_existence)
 
     # make sure the appropriate environment variable is set!
-    if("${BUILD_MARIA_INC}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "BUILD_MARIA_INC needed for mariadb!")
+    if("${BUILD_MARIADB_INC}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_MARIADB_INC needed for mariadb!")
     endif()
 
-    if("${BUILD_MARIA_LIB}" STREQUAL "")
-        MESSAGE(FATAL_ERROR "BUILD_MARIA_LIB needed for mariadb!")
+    if("${BUILD_MARIADB_LIB}" STREQUAL "")
+        MESSAGE(FATAL_ERROR "BUILD_MARIADB_LIB needed for mariadb!")
     endif()
 
 endfunction()
@@ -259,8 +259,8 @@ endfunction()
 function(_handle_pre_mariadb)
 
     _mariadb_check_existence()
-    include_directories(${BUILD_MARIA_INC})
-    link_directories(${BUILD_MARIA_LIB})
+    include_directories(${BUILD_MARIADB_INC})
+    link_directories(${BUILD_MARIADB_LIB})
 
 endfunction()
 
