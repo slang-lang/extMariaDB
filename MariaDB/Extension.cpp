@@ -42,7 +42,7 @@ namespace MariaDB {
 
 
 Extension::Extension()
-: AExtension( "MariaDB", "0.5.0" )
+: AExtension( "extMariaDB", "0.5.1" )
 {
 	mMariaDBConnections[0] = mysql_init( nullptr );
 
@@ -50,7 +50,7 @@ Extension::Extension()
 	const char *version;
 	mariadb_get_infov(mMariaDBConnections[0], MARIADB_CLIENT_VERSION, (void *)&version);
 
-	mName = "MariaDB (using libMariaDB " + std::string( version ) + ")";
+	mName = "extMariaDB (using libMariaDB " + std::string( version ) + ")";
 }
 
 void Extension::initialize( Slang::Extensions::ExtensionNamespace* /*scope*/ )
@@ -83,8 +83,8 @@ void Extension::provideMethods( Slang::Extensions::ExtensionMethods& methods )
 	methods.push_back( new MariaDB::MysqlNumRows() );
 	methods.push_back( new MariaDB::MysqlPing() );
 	methods.push_back( new MariaDB::MysqlQuery() );
-	methods.push_back( new MariaDB::MysqlRealEscapeString() );
 	methods.push_back( new MariaDB::MysqlRealConnect() );
+	methods.push_back( new MariaDB::MysqlRealEscapeString() );
 	methods.push_back( new MariaDB::MysqlRowCount() );
 	methods.push_back( new MariaDB::MysqlRowSeek() );
 	methods.push_back( new MariaDB::MysqlRowTell() );
