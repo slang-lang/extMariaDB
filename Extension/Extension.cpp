@@ -43,7 +43,7 @@ namespace MariaDB {
 
 
 Extension::Extension()
-: AExtension( "extMariaDB", "0.6.0" )
+: AExtension( "extMariaDB", "0.6.1" )
 {
 	mMariaDBConnections[0] = mysql_init( nullptr );
 
